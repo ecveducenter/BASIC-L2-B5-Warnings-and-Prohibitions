@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic English - Lesson 5: Warnings &amp; Prohibitions</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap');
+
+    :root {
+      --header-bg: #134e4a;        /* Xanh cổ vịt đậm */
+      --accent-coral: #f2657a;     /* Hồng san hô */
+      --body-bg: #eaf5f3;         /* Nền nhạt bọt biển */
+      --card-bg: #ffffff;
+      --card-sub-bg: #edf6f5;     /* Nền ô chọn A B C D & chip */
+      --text-dark: #134e4a;
+      --text-gray: #527976;
+      --border-dashed: #a8d5e2;
+      --success-color: #10b981;
+      --error-color: #ef4444;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background-color: var(--body-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+      padding-bottom: 80px;
+    }
+
+    /* TOP HEADER DESKTOP */
+    .top-bar {
+      background-color: var(--header-bg);
+      color: #ffffff;
+      padding: 24px 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 5px solid var(--accent-coral);
+    }
+
+    .top-bar .brand {
+      font-weight: 900;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      line-height: 1.25;
+      text-transform: uppercase;
+    }
+
+    .top-bar .lesson-title {
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: 1.5px;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    /* DESKTOP CONTAINER */
+    .container {
+      max-width: 1040px;
+      margin: 40px auto 0;
+      padding: 0 20px;
+    }
+
+    /* BANNER CARD DESKTOP */
+    .banner-card {
+      background-color: var(--header-bg);
+      color: #ffffff;
+      border-radius: 28px;
+      padding: 48px 56px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 30px;
+      box-shadow: 0 12px 30px rgba(19, 78, 74, 0.15);
+    }
+
+    .banner-card .sub-tag {
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      opacity: 0.9;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .banner-card h1 {
+      font-size: 3.2rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    .banner-card p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 680px;
+      margin-bottom: 28px;
+    }
+
+    .banner-card .meta-info {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .banner-card .meta-info span.dot {
+      color: var(--accent-coral);
+      font-weight: 900;
+    }
+
+    /* NAV BUTTONS DESKTOP */
+    .nav-tabs {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .nav-btn {
+      text-decoration: none;
+      background-color: #ffffff;
+      color: var(--text-dark);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 12px 28px;
+      border-radius: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      background-color: var(--header-bg);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    /* SECTIONS */
+    .section {
+      background-color: #ffffff;
+      border-radius: 24px;
+      padding: 44px 48px;
+      margin-bottom: 36px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.025);
+    }
+
+    .section-header {
+      margin-bottom: 36px;
+    }
+
+    .section-header h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
+
+    .section-header p {
+      color: var(--text-gray);
+      font-size: 1rem;
+      margin-top: 6px;
+    }
+
+    /* PHẦN I: TRẮC NGHIỆM DESKTOP GRID */
+    .mcq-item {
+      margin-bottom: 40px;
+      padding-bottom: 28px;
+      border-bottom: 1px dashed #e2f0ee;
+    }
+
+    .mcq-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 20px;
+    }
+
+    .question-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .badge-num {
+      background-color: var(--accent-coral);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 1.05rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .question-text {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
+
+    /* Grid 2 cột cho Desktop */
+    .options-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-left: 62px;
+    }
+
+    .opt-card {
+      background-color: var(--card-sub-bg);
+      border: 2px solid transparent;
+      border-radius: 18px;
+      padding: 16px 22px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text-dark);
+      transition: all 0.2s ease;
+    }
+
+    .opt-card:hover {
+      background-color: #d1eee9;
+      transform: translateY(-1px);
+    }
+
+    .opt-card.selected {
+      border-color: var(--header-bg);
+      background-color: var(--header-bg);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(19, 78, 74, 0.15);
+    }
+
+    .opt-card.selected .opt-key {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+    }
+
+    .opt-card.correct {
+      border-color: var(--success-color) !important;
+      background-color: #e6f4ea !important;
+      color: var(--success-color) !important;
+    }
+    .opt-card.correct .opt-key {
+      background-color: #ffffff;
+      color: var(--success-color);
+    }
+
+    .opt-card.incorrect {
+      border-color: var(--error-color) !important;
+      background-color: #fce8e6 !important;
+      color: var(--error-color) !important;
+    }
+    .opt-card.incorrect .opt-key {
+      background-color: #ffffff;
+      color: var(--error-color);
+    }
+
+    .opt-key {
+      background-color: #ffffff;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+      color: var(--text-dark);
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    /* PHẦN II: DRAG & DROP / SUBSTITUTION DESKTOP */
+    .sub-item {
+      margin-bottom: 42px;
+      padding-bottom: 30px;
+      border-bottom: 1px dashed #e2f0ee;
+    }
+
+    .sub-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 20px;
+    }
+
+    .word-pool {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 18px;
+      margin-left: 62px;
+    }
+
+    .word-chip {
+      background-color: var(--card-sub-bg);
+      border: none;
+      color: var(--text-dark);
+      font-weight: 800;
+      font-size: 1.05rem;
+      padding: 11px 24px;
+      border-radius: 24px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .word-chip:hover {
+      background-color: #dbece9;
+      transform: translateY(-1px);
+    }
+
+    .word-chip.selected-chip {
+      text-decoration: line-through;
+      opacity: 0.35;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .drop-box {
+      border: 2px dashed var(--border-dashed);
+      border-radius: 20px;
+      min-height: 110px;
+      margin-left: 62px;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+      background-color: #fafdfd;
+      cursor: pointer;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .drop-box .placeholder {
+      color: #89a8a4;
+      font-size: 1.05rem;
+      font-weight: 600;
+      user-select: none;
+    }
+
+    .drop-box .placed-word {
+      background-color: var(--header-bg);
+      color: #ffffff;
+      padding: 9px 20px;
+      border-radius: 18px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .drop-box.correct-box {
+      border-color: var(--success-color);
+      background-color: #f0fdf4;
+    }
+
+    .drop-box.incorrect-box {
+      border-color: var(--error-color);
+      background-color: #fef2f2;
+    }
+
+    .sub-translation {
+      margin-left: 62px;
+    }
+
+    .sub-translation .vi-main {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+    }
+
+    .sub-translation .replace-group {
+      font-size: 1rem;
+      color: var(--text-dark);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .sub-translation .replace-group strong {
+      font-weight: 800;
+    }
+
+    .sub-translation .replace-item {
+      color: var(--text-dark);
+      font-weight: 700;
+    }
+
+    .sub-translation .replace-item span {
+      color: var(--text-gray);
+      font-weight: 500;
+    }
+
+    /* ACTION BUTTONS & SCORE TRÊN PHẦN II */
+    .action-bar {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-top: 40px;
+      padding-top: 25px;
+      border-top: 2px solid #e2f0ee;
+    }
+
+    .btn-submit {
+      background-color: var(--header-bg);
+      color: #ffffff;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 1.05rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: none; /* Mặc định ẩn, chỉ hiện khi đủ 30/30 câu */
+    }
+
+    .btn-submit:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    .btn-reset {
+      background-color: #e2f0ee;
+      color: var(--text-dark);
+      border: none;
+      padding: 14px 28px;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 1.05rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: none; /* Mặc định ẩn, chỉ hiện khi đủ 30/30 câu */
+    }
+
+    .btn-reset:hover {
+      background-color: #d2e8e5;
+    }
+
+    .progress-text {
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--text-dark);
+    }
+
+    .score-text {
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-left: auto;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--text-gray);
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-top: 50px;
+    }
+
+    @media (max-width: 768px) {
+      .top-bar { padding: 20px 24px; }
+      .banner-card { padding: 32px; }
+      .banner-card h1 { font-size: 2.2rem; }
+      .options-list { grid-template-columns: 1fr; }
+      .word-pool, .drop-box, .sub-translation { margin-left: 0; }
+      .question-row { gap: 12px; }
+      .action-bar { flex-direction: column; align-items: stretch; }
+      .score-text { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER Top Bar -->
+  <header class="top-bar">
+    <div class="brand">BASIC<br>ENGLISH</div>
+    <div class="lesson-title">LESSON 5 /<br>WARNINGS &amp; PROHIBITIONS</div>
+  </header>
+
+  <main class="container">
+    <!-- BANNER CARD -->
+    <section class="banner-card">
+      <div class="sub-tag">EVERYDAY CONVERSATION</div>
+      <h1>Warnings<br>&amp; Prohibitions</h1>
+      <p>Cùng học các câu cảnh báo, nhắc nhở và đưa ra lời cấm đoán một cách tự nhiên trong các tình huống hằng ngày.</p>
+      <div class="meta-info">
+        <span>15 câu mỗi phần</span>
+        <span class="dot">•</span>
+        <span>Phần I &amp; II (Tổng 30 câu)</span>
+        <span class="dot">•</span>
+        <span>English • Vietnamese</span>
+      </div>
+    </section>
+
+    <!-- NAV TABS -->
+    <div class="nav-tabs">
+      <a href="#part1" class="nav-btn">Phần I · Mẫu câu cơ bản</a>
+      <a href="#part2" class="nav-btn">Phần II · Bài tập thay thế</a>
+    </div>
+
+    <!-- PHẦN I -->
+    <section id="part1" class="section">
+      <div class="section-header">
+        <h2>Phần I · Mẫu câu cơ bản</h2>
+        <p>Chọn nghĩa tiếng Việt phù hợp nhất cho mỗi câu.</p>
+      </div>
+
+      <div class="mcq-container" id="mcq-list-container">
+        <!-- Render danh sách câu hỏi phần I -->
+      </div>
+    </section>
+
+    <!-- PHẦN II -->
+    <section id="part2" class="section">
+      <div class="section-header">
+        <h2>Phần II · Bài tập thay thế</h2>
+        <p>Sắp xếp các từ thành câu hoàn chỉnh bằng cách nhấp vào từ hoặc kéo từ vào khung.</p>
+      </div>
+
+      <div class="sub-container" id="sub-list-container">
+        <!-- Render danh sách câu hỏi phần II -->
+      </div>
+
+      <!-- THANH NỘP BÀI VÀ LÀM LẠI -->
+      <div class="action-bar">
+        <button id="check-all" class="btn-submit">Nộp bài</button>
+        <button id="reset-all" class="btn-reset">Làm lại</button>
+        <span id="progress-display" class="progress-text">Đã hoàn thành: 0/30 câu</span>
+        <span id="score-display" class="score-text"></span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Basic English · Lesson 5: Warnings &amp; Prohibitions</p>
+  </footer>
+
+  <script>
+    const mcqDataOriginal = [
+      { num: "01", en: "There's a sign outside the gate that reads \"NO TRESPASSING\".", correct: "A", opts: [{val:"A", text:"Ngoài cổng có tấm biển ghi: \"CẤM XÂM NHẬP\"."}, {val:"B", text:"Ngoài cổng có tấm biển ghi: \"KHÔNG PHẬN SỰ CẤM VÀO\"."}, {val:"C", text:"Cấm đi vào bãi cỏ phía ngoài cổng."}, {val:"D", text:"Tránh xa khu vực cổng chính."}] },
+      { num: "02", en: "Not here.", correct: "B", opts: [{val:"A", text:"Đừng ở đây."}, {val:"B", text:"Không phải chỗ này."}, {val:"C", text:"Không bao giờ ở đây."}, {val:"D", text:"Không thể đến đây."}] },
+      { num: "03", en: "I don't think you should do that.", correct: "C", opts: [{val:"A", text:"Tôi chắc chắn bạn không được làm thế."}, {val:"B", text:"Cấm bạn làm điều đó."}, {val:"C", text:"Tôi nghĩ rằng anh không nên làm việc đó."}, {val:"D", text:"Tôi khuyên bạn nên làm việc đó ngay."}] },
+      { num: "04", en: "They can't stop me from smoking.", correct: "A", opts: [{val:"A", text:"Họ không thể ngăn tôi hút thuốc."}, {val:"B", text:"Họ vừa cấm tôi hút thuốc ở đây."}, {val:"C", text:"Tôi đã dừng hút thuốc vì họ."}, {val:"D", text:"Đừng ngăn cản tôi hút thuốc."}] },
+      { num: "05", en: "You can't go there.", correct: "D", opts: [{val:"A", text:"Bạn đừng bao giờ đến đó."}, {val:"B", text:"Bạn chưa thể đi ngay lúc này."}, {val:"C", text:"Không ai được phép đi tới đó."}, {val:"D", text:"Anh không được đi đến đó."}] },
+      { num: "06", en: "That's forbidden.", correct: "A", opts: [{val:"A", text:"Điều đó bị cấm."}, {val:"B", text:"Điều đó nguy hiểm."}, {val:"C", text:"Chuyện đó bị hủy bỏ."}, {val:"D", text:"Việc đó rất khó khăn."}] },
+      { num: "07", en: "I'm warning you.", correct: "B", opts: [{val:"A", text:"Tôi nhắc bạn lần cuối."}, {val:"B", text:"Tôi cảnh báo anh đấy."}, {val:"C", text:"Tôi đang nói thật với bạn."}, {val:"D", text:"Tôi khuyên bạn chân thành."}] },
+      { num: "08", en: "No one is allowed to go in there.", correct: "C", opts: [{val:"A", text:"Không ai muốn đi vào trong đó."}, {val:"B", text:"Cấm người lạ đi lại ở đây."}, {val:"C", text:"Không ai được phép vào trong đó."}, {val:"D", text:"Không có ai ở bên trong đó."}] },
+      { num: "09", en: "It is forbidden to do that.", correct: "A", opts: [{val:"A", text:"Cấm làm điều đó."}, {val:"B", text:"Không nên làm điều đó."}, {val:"C", text:"Hãy cẩn thận khi làm việc đó."}, {val:"D", text:"Bắt buộc phải làm điều đó."}] },
+      { num: "10", en: "NO SMOKING", correct: "B", opts: [{val:"A", text:"KHÔNG BÁN THUỐC LÁ"}, {val:"B", text:"CẤM HÚT THUỐC"}, {val:"C", text:"CẤM MANG THEO BẬT LỬA"}, {val:"D", text:"KHÔNG CÓ KHÓI THUỐC"}] },
+      { num: "11", en: "DO NOT ENTER", correct: "D", opts: [{val:"A", text:"KHÔNG ĐƯỢC RỜI ĐI"}, {val:"B", text:"LỐI RA CẤM VÀO"}, {val:"C", text:"CẤM DỪNG LẠI"}, {val:"D", text:"CẤM VÀO"}] },
+      { num: "12", en: "NO UNAUTHORIZED ENTRY", correct: "A", opts: [{val:"A", text:"KHÔNG PHẬN SỰ CẤM VÀO"}, {val:"B", text:"CẤM MANG VẬT DỤNG NGUY HIỂM"}, {val:"C", text:"CẤM TẬP TRUNG ĐÔNG NGƯỜI"}, {val:"D", text:"KHÔNG TỰ Ý THOÁT RA"}] },
+      { num: "13", en: "DO NOT WALK ON THE GRASS", correct: "C", opts: [{val:"A", text:"ĐỪNG BỎ RÁC LÊN CỎ"}, {val:"B", text:"CẤM HÁI HOA TRÊN CỎ"}, {val:"C", text:"CẤM ĐI TRÊN CỎ"}, {val:"D", text:"GIỮ GÌN VỆ SINH BÃI CỎ"}] },
+      { num: "14", en: "KEEP OUT", correct: "B", opts: [{val:"A", text:"GIỮ GÌN TRẬT TỰ"}, {val:"B", text:"TRÁNH XA"}, {val:"C", text:"Ở LẠI BÊN NGOÀI"}, {val:"D", text:"BẢO VỆ KHU VỰC"}] },
+      { num: "15", en: "NO PETS ALLOWED", correct: "A", opts: [{val:"A", text:"CẤM THÚ CƯNG / THÚ CƯNG KHÔNG ĐƯỢC VÀO"}, {val:"B", text:"CẤM MANG THEO ĐỒ ĂN THÚ CƯNG"}, {val:"C", text:"KHÔNG BÁN THÚ CƯNG Ở ĐÂY"}, {val:"D", text:"CẤM TẮM CHO THÚ CƯNG"}] }
+    ];
+
+    const subDataOriginal = [
+      { num: "01", target: "Let's go sneak into the junkyard.", words: ["the", "sneak", "go", "junkyard.", "Let's", "into"], vi: "Bọn mình hãy lẻn vào kho để đồ cũ kia đi.", replaces: "slip (lẻn) · steal (lén) · creep (rón rén)" },
+      { num: "02", target: "There's a sign outside the gate that reads \"NO TRESPASSING\".", words: ["reads", "outside", "\"NO TRESPASSING\".", "There's", "gate", "a", "sign", "that", "the"], vi: "Ngoài cổng có tấm biển ghi: \"CẤM XÂM NHẬP\".", replaces: "notice (bảng thông báo) · bulletin (bảng thông báo) · warning (lời cảnh báo)" },
+      { num: "03", target: "I said we'll sneak in, so we won't get caught.", words: ["won't", "I", "get", "in,", "sneak", "said", "caught.", "we", "we'll", "so"], vi: "Tớ đã nói là bọn mình sẽ lẻn vào mà, vì vậy bọn mình sẽ không bị bắt gặp đâu.", replaces: "discovered. (phát hiện) · found. (phát hiện ra) · in trouble. (rắc rối)" },
+      { num: "04", target: "It sure is a sunny day.", words: ["is", "sunny", "day.", "It", "sure", "a"], vi: "Hôm nay quá là một ngày nắng ấm.", replaces: "warm (ấm áp) · bright (trời trong sáng) · nice (đẹp trời)" },
+      { num: "05", target: "Everyone speeds.", words: ["speeds.", "Everyone"], vi: "Ai ai cũng đều chạy quá tốc độ cả.", replaces: "goes too fast. (chạy quá nhanh) · exceeds the speed limit. (vượt giới hạn) · drives fast. (lái xe nhanh)" },
+      { num: "06", target: "Even if it weren't illegal to drive so fast, I'd still want you to slow down.", words: ["down.", "to", "Even", "fast,", "if", "it", "I'd", "weren't", "illegal", "slow", "drive", "so", "you", "still", "want"], vi: "Cho dù lái xe quá nhanh không bất hợp pháp đi nữa thì anh vẫn muốn em lái xe chậm lại.", replaces: "against the law (trái pháp luật) · prohibited (bị cấm) · forbidden (bị cấm)" },
+      { num: "07", target: "That would be nice, but first I want to smoke this cigar.", words: ["this", "nice,", "smoke", "I", "cigar.", "That", "would", "be", "want", "but", "first", "to"], vi: "Được đấy, nhưng trước hết anh muốn hút điếu xì gà này.", replaces: "light (đốt) · have (hút) · enjoy (thưởng thức)" },
+      { num: "08", target: "Anyway, it's bad for your health.", words: ["bad", "health.", "Anyway,", "for", "it's", "your"], vi: "Dù gì đi nữa thì hút thuốc là có hại cho sức khỏe của anh.", replaces: "unhealthy. (không có lợi) · harmful. (có hại) · bad for you. (có hại cho anh)" },
+      { num: "09", target: "I'll put out the cigar.", words: ["out", "I'll", "cigar.", "put", "the"], vi: "Anh sẽ dập điếu xì gà này.", replaces: "extinguish (dập tắt) · get rid of (bỏ/vứt) · finish (chấm dứt)" },
+      { num: "10", target: "Look at that artifact.", words: ["at", "Look", "artifact.", "that"], vi: "Hãy nhìn vật trưng bày kia kìa.", replaces: "relic. (di vật) · fossil. (vật hóa thạch) · historical object. (món đồ lịch sử)" },
+      { num: "11", target: "The camera light damages the artifact.", words: ["light", "The", "artifact.", "damages", "camera", "the"], vi: "Ánh sáng của máy ảnh sẽ làm hỏng sản phẩm trưng bày.", replaces: "destroys (hủy hoại) · ruins (làm hỏng) · spoils (làm hỏng)" },
+      { num: "12", target: "We can buy one at the gift shop on the way out.", words: ["on", "buy", "way", "the", "at", "shop", "one", "We", "gift", "can", "the", "out."], vi: "Chúng ta có thể mua một tấm ở cửa hàng lưu niệm trên đường ra về.", replaces: "purchase (mua) · get (mua) · pick up (chọn)" },
+      { num: "13", target: "That's silly.", words: ["silly.", "That's"], vi: "Thật vớ vẩn.", replaces: "ridiculous. (buồn cười) · nonsense. (vô lý) · stupid. (ngớ ngẩn)" },
+      { num: "14", target: "The news said this was a serious warning.", words: ["warning.", "said", "was", "The", "this", "news", "a", "serious"], vi: "Tin phát rằng đây là một cảnh báo nghiêm túc đấy.", replaces: "a critical (nguy cấp) · an urgent (khẩn cấp) · a severe (trầm trọng)" },
+      { num: "15", target: "I guess it's not an emergency.", words: ["not", "I", "an", "guess", "it's", "emergency."], vi: "Anh cho rằng mua sữa không phải là việc khẩn cấp.", replaces: "a crisis. (nguy cấp) · a problem. (vấn đề) · too important. (quá quan trọng)" }
+    ];
+
+    function shuffleArray(array) {
+      let arr = [...array];
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function renderLesson() {
+      const mcqContainer = document.getElementById("mcq-list-container");
+      const subContainer = document.getElementById("sub-list-container");
+      
+      mcqContainer.innerHTML = "";
+      subContainer.innerHTML = "";
+
+      const shuffledMcq = shuffleArray(mcqDataOriginal).map((item, index) => {
+        return {
+          ...item,
+          displayNum: (index + 1 < 10 ? "0" : "") + (index + 1),
+          opts: shuffleArray(item.opts)
+        };
+      });
+
+      const shuffledSub = shuffleArray(subDataOriginal).map((item, index) => {
+        return {
+          ...item,
+          displayNum: (index + 1 < 10 ? "0" : "") + (index + 1),
+          words: shuffleArray(item.words)
+        };
+      });
+
+      shuffledMcq.forEach(q => {
+        let cardHTML = `
+          <div class="mcq-item" data-correct="${q.correct}">
+            <div class="question-row">
+              <div class="badge-num">${q.displayNum}</div>
+              <div class="question-text">${q.en}</div>
+            </div>
+            <div class="options-list">
+        `;
+        q.opts.forEach(opt => {
+          cardHTML += `
+            <div class="opt-card" data-val="${opt.val}">
+              <div class="opt-key">${opt.val}</div> ${opt.text}
+            </div>
+          `;
+        });
+        cardHTML += `</div></div>`;
+        mcqContainer.innerHTML += cardHTML;
+      });
+
+      shuffledSub.forEach(s => {
+        let chipsHTML = "";
+        s.words.forEach(w => {
+          chipsHTML += `<button class="word-chip">${w}</button>`;
+        });
+
+        let subHTML = `
+          <div class="sub-item" data-target="${s.target}">
+            <div class="question-row">
+              <div class="badge-num">${s.displayNum}</div>
+            </div>
+            <div class="word-pool">${chipsHTML}</div>
+            <div class="drop-box">
+              <span class="placeholder">Nhấp vào từ phía trên hoặc kéo từ vào đây</span>
+            </div>
+            <div class="sub-translation">
+              <div class="vi-main">${s.vi}</div>
+              <div class="replace-group">
+                <strong>Từ thay thế:</strong>
+                <div class="replace-item">${s.replaces}</div>
+              </div>
+            </div>
+          </div>
+        `;
+        subContainer.innerHTML += subHTML;
+      });
+
+      initInteractions();
+    }
+
+    function initInteractions() {
+      const mcqItems = document.querySelectorAll(".mcq-item");
+      mcqItems.forEach(item => {
+        const opts = item.querySelectorAll(".opt-card");
+        opts.forEach(opt => {
+          opt.addEventListener("click", () => {
+            opts.forEach(o => o.classList.remove("selected"));
+            opt.classList.add("selected");
+            updateProgress();
+          });
+        });
+      });
+
+      const subItems = document.querySelectorAll(".sub-item");
+      subItems.forEach(item => {
+        const chips = item.querySelectorAll(".word-chip");
+        const dropBox = item.querySelector(".drop-box");
+        const placeholder = dropBox.querySelector(".placeholder");
+
+        chips.forEach(chip => {
+          chip.setAttribute("draggable", "true");
+
+          chip.addEventListener("click", () => {
+            if (chip.classList.contains("selected-chip")) return;
+            addWordToBox(dropBox, chip, placeholder);
+            updateProgress();
+          });
+
+          chip.addEventListener("dragstart", (e) => {
+            e.dataTransfer.setData("text/plain", chip.textContent.trim());
+          });
+        });
+
+        dropBox.addEventListener("dragover", (e) => e.preventDefault());
+
+        dropBox.addEventListener("drop", (e) => {
+          e.preventDefault();
+          const text = e.dataTransfer.getData("text/plain");
+          const targetChip = Array.from(chips).find(c => c.textContent.trim() === text && !c.classList.contains("selected-chip"));
+          if (targetChip) {
+            addWordToBox(dropBox, targetChip, placeholder);
+            updateProgress();
+          }
+        });
+
+        dropBox.addEventListener("click", (e) => {
+          if (e.target.classList.contains("placed-word")) {
+            const wordText = e.target.textContent.trim();
+            e.target.remove();
+
+            const targetChip = Array.from(chips).find(c => c.textContent.trim() === wordText && c.classList.contains("selected-chip"));
+            if (targetChip) {
+              targetChip.classList.remove("selected-chip");
+            }
+
+            if (dropBox.querySelectorAll(".placed-word").length === 0) {
+              placeholder.style.display = "block";
+            }
+            updateProgress();
+          }
+        });
+      });
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const mcqItems = document.querySelectorAll(".mcq-item");
+      const subItems = document.querySelectorAll(".sub-item");
+
+      let completedMcq = 0;
+      mcqItems.forEach(item => {
+        if (item.querySelector(".opt-card.selected")) completedMcq++;
+      });
+
+      let completedSub = 0;
+      subItems.forEach(item => {
+        const dropBox = item.querySelector(".drop-box");
+        if (dropBox.querySelectorAll(".placed-word").length > 0) completedSub++;
+      });
+
+      const totalDone = completedMcq + completedSub;
+      document.getElementById("progress-display").textContent = `Đã hoàn thành: ${totalDone}/30 câu`;
+
+      // Ẩn/Hiện nút Nộp bài và Làm lại dựa trên tiến độ 30/30 câu
+      const checkAllBtn = document.getElementById("check-all");
+      const resetAllBtn = document.getElementById("reset-all");
+
+      if (totalDone === 30) {
+        checkAllBtn.style.display = "inline-block";
+        resetAllBtn.style.display = "inline-block";
+      } else {
+        checkAllBtn.style.display = "none";
+        resetAllBtn.style.display = "none";
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      renderLesson();
+
+      const checkAllBtn = document.getElementById("check-all");
+      const resetAllBtn = document.getElementById("reset-all");
+      const scoreDisplay = document.getElementById("score-display");
+
+      checkAllBtn.addEventListener("click", () => {
+        const mcqItems = document.querySelectorAll(".mcq-item");
+        const subItems = document.querySelectorAll(".sub-item");
+
+        let scoreP1 = 0;
+        mcqItems.forEach(item => {
+          const correctVal = item.getAttribute("data-correct");
+          const selectedOpt = item.querySelector(".opt-card.selected");
+          const opts = item.querySelectorAll(".opt-card");
+
+          opts.forEach(o => {
+            o.classList.remove("correct", "incorrect");
+            if (o.getAttribute("data-val") === correctVal) {
+              o.classList.add("correct");
+            }
+          });
+
+          if (selectedOpt) {
+            if (selectedOpt.getAttribute("data-val") === correctVal) {
+              scoreP1++;
+            } else {
+              selectedOpt.classList.add("incorrect");
+            }
+          }
+        });
+
+        let scoreP2 = 0;
+        subItems.forEach(item => {
+          const targetSentence = item.getAttribute("data-target").trim();
+          const dropBox = item.querySelector(".drop-box");
+          const placedWords = Array.from(dropBox.querySelectorAll(".placed-word")).map(w => w.textContent.trim()).join(" ");
+
+          dropBox.classList.remove("correct-box", "incorrect-box");
+
+          if (placedWords === targetSentence) {
+            scoreP2++;
+            dropBox.classList.add("correct-box");
+          } else {
+            dropBox.classList.add("incorrect-box");
+          }
+        });
+
+        const totalScore = scoreP1 + scoreP2;
+        scoreDisplay.textContent = `Tổng kết: ${totalScore}/30 câu đúng (P.I: ${scoreP1}/15, P.II: ${scoreP2}/15)`;
+        scoreDisplay.style.color = totalScore === 30 ? "#10b981" : "#134e4a";
+      });
+
+      // Nút Làm lại: Xáo trộn lại toàn bộ câu hỏi và reset trạng thái bài làm
+      resetAllBtn.addEventListener("click", () => {
+        scoreDisplay.textContent = "";
+        renderLesson(); 
+      });
+    });
+
+    function addWordToBox(box, chip, placeholder) {
+      placeholder.style.display = "none";
+      const wordBadge = document.createElement("span");
+      wordBadge.className = "placed-word";
+      wordBadge.textContent = chip.textContent.trim();
+      box.appendChild(wordBadge);
+
+      chip.classList.add("selected-chip");
+    }
+  </script>
+</body>
+</html>
